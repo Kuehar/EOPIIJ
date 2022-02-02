@@ -9,9 +9,8 @@ public class ProblemSolving {
 	        if(a > maxConstructibleValue+1){
 	            break;
 	        }
+	        maxConstructibleValue += a;
 	    }    
 	    return maxConstructibleValue+1;
-	}
-	
-	
+	}	
 }
