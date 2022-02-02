@@ -33,4 +33,16 @@ public class ProblemSolving {
 		}
 		return numBits;
 	}
+	
+	/*
+	 * Straightforward implementation of parity check.parity checks are used to detect single bit errors in data storage and communication.
+	 */
+	public static short parity(long x) {
+		short result = 0;
+		while(x != 0) {
+			result ^= 1;
+			x &= (x-1); // Drops the lowest set bit of x.
+		}
+		return result;
+	}
 }
