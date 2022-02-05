@@ -43,7 +43,7 @@ public class ArraysSolution {
 		}
 	
 	/*
-	 * program that takes two arrays representing integers and returns an intefer representing their product.
+	 * Program that takes two arrays representing integers and returns an intefer representing their product.
 	 */
 	public static List<Integer> multiply(List<Integer> num1, List<Integer> num2){
 		final int sign = num1.get(0) < 0 ^ num2.get(0) < 0 ? -1 : 1;
@@ -70,4 +70,17 @@ public class ArraysSolution {
 		result.set(0,result.get(0)*sign);
 		return result;
 	}
+	
+	/*
+	 * Program that takes an array of n integers, where A[i] denotes the maximum you can advance from index i, and returns whether it is possible to advance to the last index starting from the beginning of the array. 
+	 * Time Complexity O(N)
+	 */
+	public static boolean canReachEnd(List<Integer> maxAdvanceSteps) {
+		int furthestReachSoFar = 0,lastIndex = maxAdvanceSteps.size()-1;
+		for(int i=0;i <= furthestReachSoFar && furthestReachSoFar < lastIndex;++i) {
+			furthestReachSoFar = Math.max(furthestReachSoFar, i+maxAdvanceSteps.get(i));
+		}
+		return furthestReachSoFar >= lastIndex;
+	}
+	
 }
