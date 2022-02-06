@@ -100,6 +100,17 @@ public class ArraysSolution {
 		}
 		return writeIndex;
 		}
-	
+	/*
+	 * Program that takes Arrays that consists of stock prices and return max profit that could be made by buying and then selling one share of that stock.
+	 * Time complexity is O(n)
+	 */
+	public static double computeMaxProfit(List<Double> prices) {
+		double minPrice = Double.MAX_VALUE,maxProfit = 0.0;
+		for(Double price: prices) {
+			maxProfit = Math.max(maxProfit,price-minPrice);
+			minPrice = Math.min(minPrice, price);
+		}
+		return maxProfit;
+	}
 	
 }
