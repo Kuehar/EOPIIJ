@@ -69,8 +69,8 @@ public class ArraysSolution {
 		}
 		result.set(0,result.get(0)*sign);
 		return result;
-	}
 	
+	}
 	/*
 	 * Program that takes an array of n integers, where A[i] denotes the maximum you can advance from index i, and returns whether it is possible to advance to the last index starting from the beginning of the array. 
 	 * Time Complexity O(N)
@@ -82,5 +82,24 @@ public class ArraysSolution {
 		}
 		return furthestReachSoFar >= lastIndex;
 	}
+	/*
+	 * Delete duplicates from Array.
+	 * Time complexity is O(n).
+	 */
+	
+	public static int deleteDuplicates(List<Integer> nums) {
+		if(nums.isEmpty()) {
+			return 0;
+		}
+		
+		int writeIndex = 1;
+		for(int i=1;i<nums.size();++i) {
+			if(!nums.get(writeIndex-1).equals(nums.get(i))){
+				nums.set(writeIndex++,nums.get(i));
+			}
+		}
+		return writeIndex;
+		}
+	
 	
 }
