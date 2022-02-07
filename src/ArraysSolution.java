@@ -159,4 +159,24 @@ public class ArraysSolution {
 		return primes;
 	}
 	
+	/*
+	 *  Arranged program that takes integer argument and returns all the primes between 1 and that integer.
+	 */
+	public static List<Integer> arrangedGeneratePrimes(int num){
+		final int size = (int)Math.floor(0.5*(num-3)) + 1;
+		List<Integer> primes = new ArrayList<>();
+		primes.add(2);
+		
+		List<Boolean> isPrime = new ArrayList<>(Collections.nCopies(size, true));
+		for(int i=0;i<size;++i) {
+			if(isPrime.get(i)) {
+				int p = ((i*2)+3);
+				primes.add(p);
+				for(long j=((i*i)*2)+6*i+3;j<size;j+=p) {
+					isPrime.set((int)j, false);
+				}
+			}
+		}
+		return primes;
+	}	
 }
