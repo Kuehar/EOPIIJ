@@ -105,7 +105,7 @@ public class ArraysSolution {
 	 * Time complexity is O(n)
 	 */
 	public static double computeMaxProfit(List<Double> prices) {
-		// double minPrice = Double.MAX_VALUEはPythonでいうINFのようなもので、for文の最初では必ずprice-minPriceが代入するための仕組み
+		// double minPrice = Double.MAX_VALUEはPythonでいうINFのようなもので、for文の最初では必ずprice-minPriceを代入するための仕組み
 		double minPrice = Double.MAX_VALUE,maxProfit = 0.0;
 		for(Double price: prices) {
 			maxProfit = Math.max(maxProfit,price-minPrice);
@@ -133,6 +133,30 @@ public class ArraysSolution {
 			maxTotalProfit = Math.max(maxTotalProfit, maxPriceSoFar-prices.get(i)+firstBuySellProfits.get(i-1));
 		}
 		return maxTotalProfit;
+	}
+	
+	/*
+	 * Program that takes integer argument and returns all the primes between 1 and that integer.
+	 * Time complexity is O(nloglogn).
+	 */
+	
+	// Given nums,return all primes up to and including n.
+	public static List<Integer> generatePrimes(int num){
+		List<Integer> primes = new ArrayList<>();
+		// isPrime.get(p) represents if p is prime or not. Initially, set each to true, expecting 0 and 1. Then use sieving to eliminate nonprimes.
+		List<Boolean> isPrime = new ArrayList<>(Collections.nCopies(num+1, true));
+		isPrime.set(0,false);
+		isPrime.set(1,false);
+		
+		for(int p=2;p<=num;++p) {
+			if(isPrime.get(p)) {
+				primes.add(p);
+				for(int j=p;j<=num;j+=p) {
+					isPrime.set(j,false);
+				}
+			}
+		}
+		return primes;
 	}
 	
 }
