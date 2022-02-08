@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class ArraysSolution {
 	
@@ -220,6 +221,13 @@ public class ArraysSolution {
 		}
 		for(int i=0;i<perm.size();i++) {
 			perm.set(i, perm.get(i)+perm.size());
+		}
+	}
+	public static void randomSampling(int k,List<Integer> A) {
+		Random gen = new Random();
+		for(int i=0;i<k;++i) {
+			// Generate a random int in [i,A.size()-1]
+			Collections.swap(A, i, i+gen.nextInt(A.size()-i));
 		}
 	}
 	
