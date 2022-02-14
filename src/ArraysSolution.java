@@ -230,5 +230,25 @@ public class ArraysSolution {
 			Collections.swap(A, i, i+gen.nextInt(A.size()-i));
 		}
 	}
+	/*
+	 * Program that takes as input an n*n 2D array and rotates the array by 90 degrees clockwise.
+	 * Time Complexity is O(n^2) and the additional space complexity is O(1).
+	 */
+	
+	public static void rotateMatrix(List<List<Integer>> squareMatrix) {
+		final int matrixSize = squareMatrix.size()-1;
+		for(int i=0;i<(squareMatrix.size()/2); ++i) {
+			for(int j=i;j<matrixSize-i;++j) {
+				int temp1 = squareMatrix.get(matrixSize-j).get(i);
+				int temp2 = squareMatrix.get(matrixSize-j).get(matrixSize-j);
+				int temp3 = squareMatrix.get(j).get(matrixSize-i);
+				int temp4 = squareMatrix.get(i).get(j);
+				squareMatrix.get(i).set(j, temp1);
+				squareMatrix.get(matrixSize-j).set(i, temp2);
+				squareMatrix.get(matrixSize-i).set(matrixSize-j, temp3);
+				squareMatrix.get(j).set(matrixSize-i, temp4);
+			}
+		}
+	}
 	
 }
