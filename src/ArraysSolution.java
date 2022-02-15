@@ -232,7 +232,7 @@ public class ArraysSolution {
 	}
 	/*
 	 * Program that takes as input an n*n 2D array and rotates the array by 90 degrees clockwise.
-	 * Time Complexity is O(n^2) and the additional space complexity is O(1).
+	 * Time Complexity is O(n^2) and the additional space complexity is O(1). 
 	 */
 	
 	public static void rotateMatrix(List<List<Integer>> squareMatrix) {
@@ -251,4 +251,20 @@ public class ArraysSolution {
 		}
 	}
 	
+	/*
+	 * generate Pascals triangle based on argument, numRows.
+	 * Time Complexity and Space complexity are O(N^2).
+	 */
+	
+	public static List<List<Integer>> generatePascalTriangle(int numRows){
+		List<List<Integer>> pascalTriangle = new ArrayList<>();
+		for(int i=0;i<numRows;++i) {
+			List<Integer> currRow = new ArrayList<>();
+			for(int j=0;j<=i;i++) {
+				currRow.add((0<j && j <i) ? pascalTriangle.get(i-1).get(j-1)+pascalTriangle.get(i-1).get(j):1);
+			}
+			pascalTriangle.add(currRow);
+		}
+		return pascalTriangle;
+	}
 }
