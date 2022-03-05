@@ -24,6 +24,35 @@ public class binaryTree {
 		return tree == null || checkSymmetric(tree.left,tree.right);
 	}
 	
+	private static class BalanceStatusWithHeight{
+		public boolean balanced;
+		public int height;
+		// constructor
+		public BalanceStatusWithHeight(boolean balanced,int height) {
+			this.balanced = balanced;
+			this.height = height;
+		}
+	}
+	
+	public static boolean isBalanced(BinaryTreeNode<Integer> tree) {
+		return checkBalanced(tree).balanced;
+	}
+	
+	private static BalanceStatusWithHeight checkBalanced(BinaryTreeNode<Integer> tree) {
+		// Base case.
+		if(tree == null) return new BalanceStatusWithHeight(true, -1);
+		
+		BalanceStatusWithHeight leftResult = checkBalanced(tree.left);
+		if(!leftResult.balanced) return leftResult;
+		
+		BalanceStatusWithHeight rightResult = checkBalanced(tree.right);
+		if(!rightResult.balanced) return rightResult;
+		
+		boolean isBalanced = Math.abs(leftResult.height - rightResult.height) <= 1;
+		int height = Math.max(leftResult.height, rightResult.height)+1;
+		return new BalanceStatusWithHeight(isBalanced, height);
+	}
+	
 	private static boolean checkSymmetric(BinaryTreeNode<Integer> subtree0,BinaryTreeNode<Integer> subtree1){
 		if(subtree0 == null &&  subtree1 == null) {
 			return true;
