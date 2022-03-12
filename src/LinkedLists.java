@@ -13,6 +13,12 @@ public class LinkedLists {
 		return L;
 	}
 	
+	// Insert
+	public static void insert(ListNode<Integer> node,ListNode<Integer> newNode) {
+		newNode.next = node.next;
+		node.next = newNode;
+	}
+}
+	
 	
 
-}
