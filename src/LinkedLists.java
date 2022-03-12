@@ -18,6 +18,11 @@ public class LinkedLists {
 		newNode.next = node.next;
 		node.next = newNode;
 	}
+	
+	// Delete
+	public static void delete(ListNode<Integer> node) {
+		node.next = node.next.next;
+	}
 }
 	
 	
