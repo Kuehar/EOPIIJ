@@ -26,7 +26,7 @@ public class LinkedLists {
 	
 	// Merge two sorted linked lists.
 	public static ListNode<Integer> mergeTwoSortedLists(ListNode<Integer> l1,ListNode<Integer> l2){
-		ListNode<Integer> dummy = new ListNode<>(0,null);
+		ListNode<Integer> dummy = new ListNode();
 		ListNode<Integer> current = dummy;
 		ListNode<Integer> p1 = l1, p2 = l2;
 		
